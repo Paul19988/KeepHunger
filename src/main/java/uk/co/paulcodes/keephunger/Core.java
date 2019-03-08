@@ -6,9 +6,6 @@ import org.bukkit.event.entity.PlayerDeathEvent;
 import org.bukkit.event.player.PlayerRespawnEvent;
 import org.bukkit.plugin.java.JavaPlugin;
 
-import java.util.HashMap;
-import java.util.UUID;
-
 public class Core extends JavaPlugin implements Listener {
 
     @Override
@@ -22,16 +19,16 @@ public class Core extends JavaPlugin implements Listener {
         System.out.println("KeepHunger is now disabled!");
     }
 
-    private static HashMap<String, Integer> hungerlvl = new HashMap<>();
-
     @EventHandler
     private static void onDeath(PlayerDeathEvent e) {
-        hungerlvl.put(e.getEntity().getUniqueId().toString(), e.getEntity().getFoodLevel());
+        getInstance().getConfig().set(e.getEntity().getUniqueId().toString(), e.getEntity().getFoodLevel());
     }
 
     @EventHandler
     private static void onRespawn(PlayerRespawnEvent e) {
-        e.getPlayer().setFoodLevel(hungerlvl.get(e.getPlayer().getUniqueId().toString()));
+        e.getPlayer().setFoodLevel((int) getInstance().getConfig().get(e.getPlayer().getUniqueId().toString()));
     }
+
+    public static Core getInstance() { return Core.getPlugin(Core.class); }
 
 }
