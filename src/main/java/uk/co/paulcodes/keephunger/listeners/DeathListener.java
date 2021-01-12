@@ -17,13 +17,17 @@ public class DeathListener implements Listener {
     private void onDeath(PlayerDeathEvent e) {
         Player p = e.getEntity();
         int foodLevel = p.getFoodLevel();
-        playerHunger.put(p.getUniqueId(), foodLevel);
+        if(p.hasPermission("keephunger.restorehunger")) {
+            playerHunger.put(p.getUniqueId(), foodLevel);
+        }
     }
 
     @EventHandler
     private void onRespawn(PlayerRespawnEvent e) {
         Player p = e.getPlayer();
-        p.setFoodLevel(playerHunger.get(p.getUniqueId()));
+        if(p.hasPermission("keephunger.restorehunger")) {
+            p.setFoodLevel(playerHunger.get(p.getUniqueId()));
+        }
     }
 
 }
