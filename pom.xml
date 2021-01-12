@@ -6,38 +6,21 @@
 
     <groupId>uk.co.paulcodes</groupId>
     <artifactId>keephunger</artifactId>
-    <version>0.1</version>
+    <version>0.2</version>
     <packaging>jar</packaging>
     <name>KeepHunger</name>
 
     <properties>
-        <project.mainClass>uk.co.paulcodes.keephunger.Core</project.mainClass>
+        <project.mainClass>uk.co.paulcodes.keephunger.KeepHunger</project.mainClass>
         <project.author>PaulCodesUK</project.author>
     </properties>
 
     <dependencies>
-        <!-- SpigotAPI Dependency -->
-        <dependency>
-            <groupId>org.spigotmc</groupId>
-            <artifactId>spigot-api</artifactId>
-            <version>1.12.2-R0.1-SNAPSHOT</version>
-            <scope>provided</scope>
-        </dependency>
-
         <!-- Spigot Dependency -->
         <dependency>
             <groupId>org.spigotmc</groupId>
             <artifactId>spigot</artifactId>
-            <version>1.12.2-R0.1-SNAPSHOT</version>
-            <scope>system</scope>
-            <systemPath>${project.basedir}/lib/spigot-1.12.2-R0.1-SNAPSHOT-b1586.jar</systemPath>
-        </dependency>
-
-        <!-- Bukkit API -->
-        <dependency>
-            <groupId>org.bukkit</groupId>
-            <artifactId>bukkit</artifactId>
-            <version>1.12.2-R0.1-SNAPSHOT</version>
+            <version>1.16.4-R0.1-SNAPSHOT</version>
             <scope>provided</scope>
         </dependency>
     </dependencies>
@@ -55,7 +38,7 @@
             </resource>
         </resources>
 
-        <finalName>${project.name}</finalName>
+        <finalName>${project.name}-${project.version}</finalName>
         <defaultGoal>clean install</defaultGoal>
         <!-- Plugins -->
         <plugins>
